@@ -1,0 +1,54 @@
+
+main.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	b480      	push	{r7}
+   2:	b083      	sub	sp, #12
+   4:	af00      	add	r7, sp, #0
+   6:	4b17      	ldr	r3, [pc, #92]	; (64 <main+0x64>)
+   8:	699b      	ldr	r3, [r3, #24]
+   a:	4a16      	ldr	r2, [pc, #88]	; (64 <main+0x64>)
+   c:	f043 0308 	orr.w	r3, r3, #8
+  10:	6193      	str	r3, [r2, #24]
+  12:	4b15      	ldr	r3, [pc, #84]	; (68 <main+0x68>)
+  14:	681b      	ldr	r3, [r3, #0]
+  16:	4a14      	ldr	r2, [pc, #80]	; (68 <main+0x68>)
+  18:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+  1c:	6013      	str	r3, [r2, #0]
+  1e:	4b12      	ldr	r3, [pc, #72]	; (68 <main+0x68>)
+  20:	681b      	ldr	r3, [r3, #0]
+  22:	4a11      	ldr	r2, [pc, #68]	; (68 <main+0x68>)
+  24:	f443 7300 	orr.w	r3, r3, #512	; 0x200
+  28:	6013      	str	r3, [r2, #0]
+  2a:	4b0f      	ldr	r3, [pc, #60]	; (68 <main+0x68>)
+  2c:	681b      	ldr	r3, [r3, #0]
+  2e:	4a0e      	ldr	r2, [pc, #56]	; (68 <main+0x68>)
+  30:	f423 6380 	bic.w	r3, r3, #1024	; 0x400
+  34:	6013      	str	r3, [r2, #0]
+  36:	4b0c      	ldr	r3, [pc, #48]	; (68 <main+0x68>)
+  38:	681b      	ldr	r3, [r3, #0]
+  3a:	4a0b      	ldr	r2, [pc, #44]	; (68 <main+0x68>)
+  3c:	f423 6300 	bic.w	r3, r3, #2048	; 0x800
+  40:	6013      	str	r3, [r2, #0]
+  42:	4b09      	ldr	r3, [pc, #36]	; (68 <main+0x68>)
+  44:	68db      	ldr	r3, [r3, #12]
+  46:	4a08      	ldr	r2, [pc, #32]	; (68 <main+0x68>)
+  48:	f083 0304 	eor.w	r3, r3, #4
+  4c:	60d3      	str	r3, [r2, #12]
+  4e:	2300      	movs	r3, #0
+  50:	607b      	str	r3, [r7, #4]
+  52:	e002      	b.n	5a <main+0x5a>
+  54:	687b      	ldr	r3, [r7, #4]
+  56:	3301      	adds	r3, #1
+  58:	607b      	str	r3, [r7, #4]
+  5a:	687b      	ldr	r3, [r7, #4]
+  5c:	4a03      	ldr	r2, [pc, #12]	; (6c <main+0x6c>)
+  5e:	4293      	cmp	r3, r2
+  60:	ddf8      	ble.n	54 <main+0x54>
+  62:	e7ee      	b.n	42 <main+0x42>
+  64:	40021000 	.word	0x40021000
+  68:	40010c00 	.word	0x40010c00
+  6c:	000f423f 	.word	0x000f423f

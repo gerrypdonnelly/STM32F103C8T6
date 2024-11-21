@@ -1,0 +1,46 @@
+# Path : F:\MicroControllers\GCC_tools_&_make_file\linkerandstartup>
+# $^ input files dosen't work in nmake
+# $@ output file dosen't work in nmake
+
+# once connected using telnet on 4444
+# reset init 
+# flash write_image erase stm32_blink.elf 
+# reset init
+# resume
+
+# Problems
+# works with nmake but not make
+# telnet gives invalid host on 4444
+
+#other questions relating to HKC
+#What data is transfered between end devices and HUB?
+#Is there a driver example?
+#How to deal with the HAL file when transfering program to to run on an alternative device.
+
+
+CC = arm-none-eabi-gcc
+CFLAGS = -c -mcpu=cortex-m3 -mthumb -std=gnu11
+LDFLAGS =-nostdlib -T stm32_linker_script.ld -Wl,-Map=$(BUILD_DIR)/stm32_blink.map
+BUILD_DIR = out
+
+build : prereq $(BUILD_DIR)/stm32_blink.elf
+
+prereq :
+	mkdir $(BUILD_DIR)
+
+$(BUILD_DIR)/main.o : src/main.c
+	$(CC) $(CFLAGS) main.c -o main.o
+
+$(BUILD_DIR)/stm32f103_startup.o : src/stm32f103_startup.c
+	$(CC) $(CFLAGS) stm32f103_startup.c -o stm32f103_startup.o
+
+$(BUILD_DIR)/stm32_blink.elf : $(BUILD_DIR)/main.o $(BUILD_DIR)/stm32f103_startup.o
+	$(CC)  $(LDFLAGS) *.o -o stm32_blink.elf  
+
+load :
+	openocd -f board/st_nucleo_f103rb.cfg
+
+clean :
+#	del -f out/*.o out/*.map out/*.elf      nmake make issue
+#	rmdir /s out                            nmake make issue
+	rmdir $(BUILD_DIR)
