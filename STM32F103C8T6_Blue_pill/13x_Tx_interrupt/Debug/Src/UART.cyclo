@@ -1,0 +1,6 @@
+/home/ger/Documents/MicroControllers/STM32F103C8T6_Blue_pill/Chip_headers/CMSIS/Include/core_cm3.h:1511:22:__NVIC_EnableIRQ	2
+../Src/UART.c:12:6:uart_Tx_interrupt_init	1
+../Src/UART.c:40:6:uart_Rx_interrupt_init	1
+../Src/UART.c:68:6:uart_RxTx_init	1
+../Src/UART.c:97:6:uart_read	2
+../Src/UART.c:106:6:uart_transmit	2
